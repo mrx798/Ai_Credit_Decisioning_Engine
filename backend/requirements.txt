@@ -1,0 +1,17 @@
+# FastAPI App Server
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+
+# PDF Parsing & OCR
+pdfplumber==0.10.3
+pytesseract==0.3.10
+Pillow==10.1.0
+pdf2image==1.16.3
+
+# Data Handling
+pydantic==2.5.2
+
+# Testing (Local Dev)
+pytest==7.4.3
+requests==2.31.0

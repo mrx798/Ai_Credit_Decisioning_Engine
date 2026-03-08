@@ -1,0 +1,221 @@
+{
+    "fields": {
+        "revenue_yr2": {
+            "keywords": [
+                "revenue (yr 2)",
+                "revenue from operations",
+                "total revenue",
+                "gross turnover",
+                "turnover",
+                "sales",
+                "net sales",
+                "revenue"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "revenue_yr1": {
+            "keywords": [
+                "revenue (yr 1)"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "other_income": {
+            "keywords": [
+                "other income"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "ebitda": {
+            "keywords": [
+                "ebitda",
+                "earnings before interest",
+                "profit before depreciation",
+                "operating profit",
+                "pbit"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "depreciation": {
+            "keywords": [
+                "depreciation",
+                "amortization"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "interest_expense": {
+            "keywords": [
+                "interest expense",
+                "finance cost"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "tax": {
+            "keywords": [
+                "tax expense",
+                "income tax",
+                "tax"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "net_profit": {
+            "keywords": [
+                "profit after tax",
+                "pat",
+                "net profit",
+                "profit for the year",
+                "profit / (loss)"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "share_capital": {
+            "keywords": [
+                "share capital",
+                "equity share capital"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "reserves": {
+            "keywords": [
+                "reserves",
+                "reserves and surplus",
+                "retained earnings"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "total_debt": {
+            "keywords": [
+                "long term debt",
+                "long term borrowings",
+                "total borrowings",
+                "total debt"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "short_term_debt": {
+            "keywords": [
+                "short term debt",
+                "short term borrowings",
+                "current borrowings"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "fixed_assets": {
+            "keywords": [
+                "fixed assets (net)",
+                "fixed assets",
+                "property plant and equipment",
+                "ppe",
+                "tangible assets"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "current_assets": {
+            "keywords": [
+                "current assets",
+                "total current assets"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "current_liabilities": {
+            "keywords": [
+                "current liabilities",
+                "total current liabilities"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "loan_amount_requested": {
+            "keywords": [
+                "loan amount requested",
+                "loan requested"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "tenure_months": {
+            "keywords": [
+                "tenure",
+                "tenure (months)",
+                "tenure (m)"
+            ],
+            "type": "numeric"
+        },
+        "collateral_value": {
+            "keywords": [
+                "collateral value",
+                "collateral val",
+                "value of collateral",
+                "collateral"
+            ],
+            "requires_currency": true,
+            "type": "numeric"
+        },
+        "gstr_3b_turnover": {
+            "keywords": [
+                "gstr-3b turnover",
+                "taxable value",
+                "total turnover",
+                "outward supplies"
+            ],
+            "type": "numeric"
+        },
+        "gst_2a_purchases": {
+            "keywords": [
+                "gstr-2a purchases",
+                "total purchases",
+                "inward supplies",
+                "itc available"
+            ],
+            "type": "numeric"
+        },
+        "bank_turnover": {
+            "keywords": [
+                "bank turnover",
+                "total credits in bank"
+            ],
+            "type": "numeric"
+        },
+        "gstr_1_filed": {
+            "keywords": [
+                "gstr-1 filed",
+                "gstr-1 turnover",
+                "gstr1 filed"
+            ],
+            "type": "numeric"
+        }
+    },
+    "normalization": {
+        "currency_symbols": [
+            "₹",
+            "rs",
+            "inr",
+            "rupees"
+        ],
+        "scales": {
+            "crores": 1.0,
+            "crore": 1.0,
+            "crs": 1.0,
+            "cr": 1.0,
+            "lakhs": 0.01,
+            "lacs": 0.01,
+            "lakh": 0.01,
+            "thousands": 0.0001,
+            "millions": 0.1,
+            "mn": 0.1
+        }
+    }
+}

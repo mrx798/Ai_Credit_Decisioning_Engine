@@ -1,0 +1,46 @@
+﻿INFO:     127.0.0.1:61986 - "POST /extract HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61740 - "POST /extract HTTP/1.1" 200 OK
+Starting Uvicorn Server...
+Running Demo Extractor against Dummy PDFs...
+
+[demo/annual_report_demo.pdf] -> Initiating offline deterministic extraction...
+   > Uploading to http://localhost:8000/extract
+
+   [EXTRACTION RESULTS]
+   [OK] REVENUE_YR2           : 4.8500000000000005 (Conf: 0.90)
+   [OK] REVENUE_YR1           : 4.8500000000000005 (Conf: 0.90)
+   [OK] EBITDA                :       52.0 (Conf: 0.90)
+   [OK] NET_PROFIT            :      -15.6 (Conf: 0.80)
+   [OK] TOTAL_DEBT            :  2000000.0 (Conf: 0.90)
+   ! GSTR_3B_TURNOVER      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GST_2A_PURCHASES      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! MONTHLY_BANK_CREDITS  : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+
+   [END DEMO]
+
+[demo/bank_statement_demo.pdf] -> Initiating offline deterministic extraction...
+   > Uploading to http://localhost:8000/extract
+
+   [EXTRACTION RESULTS]
+   ! REVENUE_YR2           : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! REVENUE_YR1           : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! EBITDA                : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! NET_PROFIT            : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! TOTAL_DEBT            : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GSTR_3B_TURNOVER      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GST_2A_PURCHASES      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! MONTHLY_BANK_CREDITS  : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+
+   [END DEMO]
+Integration Complete. Shutting down Uvicorn...

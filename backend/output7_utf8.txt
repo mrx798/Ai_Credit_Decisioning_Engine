@@ -1,0 +1,48 @@
+﻿
+[D:\AI Credit Decisioning Engine\backend\demo\annual_report_demo.pdf] -> Initiating offline deterministic extraction...
+   > Uploading to http://localhost:8000/extract
+
+   [EXTRACTION RESULTS]
+   [OK] REVENUE_YR2           : 4.8500000000000005 (Conf: 0.90)
+   ! REVENUE_YR1           : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! OTHER_INCOME          : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   [OK] EBITDA                :       52.0 (Conf: 0.90)
+   ! DEPRECIATION          : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! INTEREST_EXPENSE      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   [OK] TAX                   :      -15.6 (Conf: 0.85)
+   [OK] NET_PROFIT            :      -15.6 (Conf: 0.85)
+   ! SHARE_CAPITAL         : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! RESERVES              : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   [OK] TOTAL_DEBT            :  2000000.0 (Conf: 0.90)
+   ! SHORT_TERM_DEBT       : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! FIXED_ASSETS          : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! CURRENT_ASSETS        : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! CURRENT_LIABILITIES   : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! LOAN_AMOUNT_REQUESTED : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! TENURE_MONTHS         : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! COLLATERAL_VALUE      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GSTR_3B_TURNOVER      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GST_2A_PURCHASES      : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! BANK_TURNOVER         : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! GSTR_1_FILED          : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+   ! MONTHLY_BANK_CREDITS  : MANUAL REVIEW REQUIRED (Conf: 0.00)
+     Candidates:
+
+   [END DEMO]

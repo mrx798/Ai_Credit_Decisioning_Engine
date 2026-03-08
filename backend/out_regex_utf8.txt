@@ -1,0 +1,8 @@
+﻿Original 'revenue': [' 2', ' 485', ' 1', ' 445', ' 7', ' 52']
+Fixed 'revenue': ['  485', '  445', ' 7', ' 52']
+Original 'revenue': [' 1', ' 445', ' 7', ' 52', ' 12']
+Fixed 'revenue': ['  445', ' 7', ' 52', ' 12']
+Original 'ebitda': [' 52', ' 12', ' 28', ' 3.5']
+Fixed 'ebitda': [' 52', ' 12', ' 28', ' 3.5']
+Original 'purchases': [' 495', ' 420', '-1', ' 508']
+Fixed 'purchases': [' 495', ' 420', '-1', ' 508']

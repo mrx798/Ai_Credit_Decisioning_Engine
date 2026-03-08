@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { ShieldCheck, AlertTriangle, ChevronRight, Activity, DollarSign, Briefcase, FileText, CheckCircle, Search, BarChart2, Check, Download, XCircle } from "lucide-react";
+import { ShieldCheck, AlertTriangle, ChevronRight, Activity, DollarSign, Briefcase, FileText, CheckCircle, Search, BarChart2, Check, Download, XCircle, Upload, Loader2 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const SECTOR_DB = {
@@ -61,6 +61,61 @@ export default function App() {
     const [d, setD] = useState(ZEROS);
     const [rOut, setROut] = useState(null);
     const [isRes, setIsRes] = useState(false);
+    const [isExtracting, setIsExtracting] = useState(false);
+
+    const handleUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        setIsExtracting(true);
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const res = await fetch("http://localhost:8000/auto_fill_preview", {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+
+            let updates = {};
+            if (data.revenue_yr2) updates.revenue = data.revenue_yr2;
+            if (data.revenue_yr1) updates.revenueY1 = data.revenue_yr1;
+            if (data.other_income) updates.otherInc = data.other_income;
+            if (data.ebitda) updates.ebitda = data.ebitda;
+            if (data.depreciation) updates.dep = data.depreciation;
+            if (data.interest_expense) updates.intExp = data.interest_expense;
+            if (data.tax) updates.tax = data.tax;
+
+            if (data.share_capital) updates.shareCap = data.share_capital;
+            if (data.reserves) updates.reserves = data.reserves;
+            if (data.total_debt) updates.ltDebt = data.total_debt;
+            if (data.short_term_debt) updates.stDebt = data.short_term_debt;
+            if (data.fixed_assets) updates.fa = data.fixed_assets;
+            if (data.current_assets) updates.ca = data.current_assets;
+            if (data.current_liabilities) updates.cl = data.current_liabilities;
+
+            if (data.loan_amount_requested) updates.loanAmt = data.loan_amount_requested;
+            if (data.tenure_months) updates.tenure = data.tenure_months;
+            if (data.collateral_value) updates.col = data.collateral_value;
+
+            if (data.gstr_3b_turnover) updates.gst3b = data.gstr_3b_turnover;
+            if (data.gst_2a_purchases) updates.gst2a = data.gst_2a_purchases;
+            if (data.bank_turnover) updates.bankTx = data.bank_turnover;
+            if (data.gstr_1_filed) updates.gst1 = data.gstr_1_filed;
+
+            if (data.monthly_bank_credits && data.monthly_bank_credits.length > 0 && !updates.bankTx) {
+                updates.bankTx = data.monthly_bank_credits.reduce((sum, m) => sum + m.credit_sum, 0);
+            }
+
+            setD(prev => ({ ...prev, ...updates }));
+
+        } catch (err) {
+            console.error(err);
+            alert("Extraction Failed: Make sure Python Backend is running at http://localhost:8000");
+        }
+        setIsExtracting(false);
+        e.target.value = null; // reset input
+    };
 
     const fmt = (v) => Number(v.toFixed(2)).toLocaleString('en-IN', { minimumFractionDigits: 2 });
 
@@ -240,6 +295,23 @@ export default function App() {
                 {/* SCREEN 1: INGESTOR */}
                 {step === 1 && (
                     <div className="space-y-8 animate-in fade-in duration-500">
+                        {/* Intelligent PDF Upload Banner */}
+                        <div className="bg-gradient-to-r from-[#1E293B] to-[#0B1426] p-6 rounded-2xl border border-[#F59E0B]/50 flex flex-col md:flex-row items-center justify-between shadow-lg shadow-black/50 gap-4">
+                            <div>
+                                <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                                    <FileText className="text-[#F59E0B]" /> Intelligent PDF Extraction
+                                </h2>
+                                <p className="text-sm text-slate-400">Upload Indian Corporate Annual Reports, GST Returns, or Bank Statements. Our local AI engine will auto-extract and standardize values to Crores.</p>
+                            </div>
+                            <div className="relative group min-w-[250px]">
+                                <input type="file" onChange={handleUpload} accept=".pdf" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" disabled={isExtracting} />
+                                <button className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${isExtracting ? 'bg-slate-700 text-slate-400 cursor-not-allowed' : 'bg-[#F59E0B] hover:bg-yellow-500 text-[#0B1426] group-hover:scale-105 shadow-xl shadow-[#F59E0B]/20'}`}>
+                                    {isExtracting ? <Loader2 className="animate-spin" /> : <Upload />}
+                                    {isExtracting ? 'Analyzing PDF...' : 'Upload & Auto-Fill'}
+                                </button>
+                            </div>
+                        </div>
+
                         <div className="bg-[#1E293B] p-6 rounded-2xl border border-slate-700">
                             <h2 className="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-2 flex items-center gap-2"><DollarSign className="text-emerald-400" /> Financial Inputs (₹ Crores)</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
