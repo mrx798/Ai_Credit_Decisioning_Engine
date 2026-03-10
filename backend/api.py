@@ -6,7 +6,7 @@ import os
 import uuid
 import logging
 
-from intelli_pdf_extractor.core import extract_financials, get_raw_text
+from intelli_pdf_extractor import extract_financials, get_raw_text
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -91,3 +91,26 @@ async def auto_fill_preview(file: UploadFile = File(...)):
              preview[key] = None
              
     return preview
+
+class CreditScoreInput(BaseModel):
+    revenue_growth: float
+    ebitda_margin: float
+    debt_equity: float
+    current_ratio: float
+    interest_coverage: float
+    sector_risk_multiplier: float
+
+from ml_credit_model import credit_model
+
+@app.post('/score')
+async def generate_credit_score(data: CreditScoreInput):
+    """
+    Accepts financial ratios and runs the Scikit-Learn Random Forest model.
+    Returns the credit score, Probability of Default (PD), and SHAP explainability values.
+    """
+    try:
+        result = credit_model.predict(data.dict())
+        return result
+    except Exception as e:
+        logger.error(f'ML Model Error: {e}')
+        raise HTTPException(status_code=500, detail=f'Score Engine Error: {str(e)}')
